@@ -10,6 +10,8 @@ var pig1, pig2;
 var bird;
 var stage;
 var platform;
+var constraint_log;
+var chain;
 
 function preload(){
     stage=loadImage("sprites/bg.png");
@@ -44,8 +46,9 @@ pig1 = new Pig(570,350);
 pig2 = new Pig(570,270);
 
 bird=new Bird(100,100);
+constraint_log=new Log(230,180,20,80,PI/2);
 
-
+chain=new Chain(bird.body,constraint_log.body);
 
 }
 
@@ -78,4 +81,6 @@ pig2.display();
 
 bird.display();
 platform.display();
+constraint_log.display();
+chain.display();
 }
