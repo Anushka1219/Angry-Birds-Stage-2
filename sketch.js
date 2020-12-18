@@ -10,8 +10,8 @@ var pig1, pig2;
 var bird;
 var stage;
 var platform;
-var constraint_log;
-var chain;
+//var constraint_log;
+var sling1;
 
 function preload(){
     stage=loadImage("sprites/bg.png");
@@ -25,7 +25,7 @@ function setup(){
 
     
     ground = new Ground(600,390,1200,20)
-platform= new Ground(100,390,300,500)
+platform= new Ground(70,390,150,500)
 
     box1 = new Box(450,350,70,70);
     box2 = new Box(700,350,70,70);
@@ -46,9 +46,9 @@ pig1 = new Pig(570,350);
 pig2 = new Pig(570,270);
 
 bird=new Bird(100,100);
-constraint_log=new Log(230,180,20,80,PI/2);
+//constraint_log=new Log(230,180,20,80,PI/2);
 
-chain=new Chain(bird.body,constraint_log.body);
+sling1=new Slingshot(bird.body,{x:110,y:100});
 
 }
 
@@ -81,6 +81,21 @@ pig2.display();
 
 bird.display();
 platform.display();
-constraint_log.display();
-chain.display();
+//constraint_log.display();
+sling1.display();
+
+
+
+
 }
+
+function mouseDragged(){
+    Matter.Body.setPosition(bird.body,{x:mouseX,y:mouseY})
+}
+
+
+function mouseReleased(){
+sling1.fly();
+}
+
+
